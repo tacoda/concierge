@@ -1,0 +1,11 @@
+<h1>Rooms</h1>
+
+<ul>
+  <% @rooms.each do |room| %>
+    <li>
+      <%= link_to "#{room.number} (#{room.room_type})", room %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Room", new_room_path %>

@@ -1,0 +1,21 @@
+<p>
+    <strong>Guest:</strong>
+    <%= booking.guest %>
+</p>
+  
+<p>
+    <strong>Start Date:</strong>
+    <%= booking.start_date %>
+</p>
+  
+<p>
+    <strong>End Date:</strong>
+    <%= booking.end_date %>
+</p>
+
+<p>
+  <%= link_to "Remove Booking", [booking.room, booking], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            } %>
+</p>
