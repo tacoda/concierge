@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_29_140134) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_23_171351) do
   create_table "bookings", force: :cascade do |t|
     t.string "guest"
     t.date "start_date"
