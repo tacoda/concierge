@@ -1,0 +1,15 @@
+<h1><%= @booking.guest %></h1>
+
+<p>Room number: <%= @booking.room.id %></p>
+
+<p>From: <%= @booking.start_date %></p>
+
+<p>To: <%= @booking.end_date %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_booking_path(@booking) %></li>
+  <li><%= link_to "Destroy", booking_path(@booking), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

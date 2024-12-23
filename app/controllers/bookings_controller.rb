@@ -1,17 +1,47 @@
 class BookingsController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+  # http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+
+  def index
+    @bookings = Booking.all
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
+  def new
+    @booking = Booking.new
+  end
 
   def create
-    @room = Room.find(params[:room_id])
+    @room = Room.find(params[:booking][:room])
     @booking = @room.bookings.create(booking_params)
-    redirect_to room_path(@room)
+
+    if @booking.save
+      redirect_to @booking
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+
+    if @booking.update(booking_params)
+      redirect_to @booking
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @room = Room.find(params[:room_id])
-    @booking = @room.bookings.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     @booking.destroy
-    redirect_to room_path(@room), status: :see_other
+    redirect_to booking_path(@booking), status: :see_other
   end
 
   private

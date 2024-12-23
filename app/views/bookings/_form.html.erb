@@ -1,17 +1,39 @@
-<%= form_with model: [ @room, @room.bookings.build ] do |form| %>
-  <p>
-    <%= form.label :guest %><br>
-    <%= form.text_field :guest %>
-  </p>
-  <p>
-    <%= form.label :start_date %><br>
-    <%= form.date_field :start_date %>
-  </p>
-  <p>
-    <%= form.label :end_date %><br>
-    <%= form.date_field :end_date %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<%= form_with model: @booking do |form| %>
+  <div class="mt-8 space-y-12">
+
+    <div class="border-b border-gray-900/10 pb-12">
+
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <%= form.label :guest, class: "block text-sm/6 font-medium text-gray-900" %>
+          <div class="mt-2">
+            <%= form.text_field :guest, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <%= form.label :room, class: "block text-sm/6 font-medium text-gray-900" %>
+          <div class="mt-2">
+            <%= form.number_field :room, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <%= form.label :start_date, class: "block text-sm/6 font-medium text-gray-900" %>
+          <div class="mt-2">
+            <%= form.date_field :start_date, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <%= form.label :end_date, class: "block text-sm/6 font-medium text-gray-900" %>
+          <div class="mt-2">
+            <%= form.date_field :end_date, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
+          </div>
+        </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
+    <%= form.submit class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  </div>
 <% end %>
